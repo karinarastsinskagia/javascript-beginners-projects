@@ -1,0 +1,30 @@
+img {
+    display: block;
+}
+.deadline {
+    display: flex;
+}
+.deadline-format {
+    margin-right: 1rem;
+    width: 5rem;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.deadline-format span {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
+.deadline h4:not(.expired) {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.25rem;
+}
+
+.expired{
+    font-size: 1rem;
+    line-height: 1;
+}
