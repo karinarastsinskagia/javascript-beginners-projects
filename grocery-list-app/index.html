@@ -14,13 +14,29 @@
 <h1>Grocery List</h1>
 
 <div class="topnav">
-    <input type="text" placeholder="Add new item..">
-    <button type="submit">Submit</button>
+    <input type="text" placeholder="Add new item.." id="item-name">
+    <button type="submit"  id="add-item">Submit</button>
 </div>
 
 <!--list items and their available actions-->
+<div class="list">
+    <div class="item-row">
+        <div class="item">
+            <ul>X</ul>
+        </div>
+        <div class="item-action">
+            <button type="submit" id="edit-item">Edit</button>
+        </div>
+        <div class="item-action">
+            <button type="submit" id="delete-item">Delete</button>
+        </div>
+    </div>
+</div>
 
 <!--clear all button-->
+<div class="clear-button">
+    <button type="submit" id="clear-all">Clear all</button>
+</div>
 
 <script src="app.js"></script>
 
