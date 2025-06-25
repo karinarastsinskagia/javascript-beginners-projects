@@ -1,34 +1,33 @@
 //
-var listContainer = document.querySelector(".list");
-var newItemBtn = document.getElementById("add-item");
-var clearBtn = document.getElementById("clear-all");
+const listContainer = document.querySelector(".list");
+const newItemBtn = document.getElementById("add-item");
+const clearBtn = document.getElementById("clear-all");
+
 // display items onload
 window.addEventListener("DOMContentLoaded", setupItems);
-// Listeners //
+
+// Fixed Listeners //
 newItemBtn.addEventListener("click", addItem);
 clearBtn.addEventListener("click", clearAll);
 
-//add action
+//add new item in the list
 function addItem(e) {
 
-    var itemValue = document.querySelector("#item-name").value;
+    let itemValue = document.querySelector("#item-name").value;
 
     if (itemValue !== "")
     {
-        var id = new Date().getTime().toString();
+        let id = new Date().getTime().toString();
 
         createListItem(id, itemValue)
 
         // display alert
         window.alert("New item added to the list");
-        // show container
-        // container.classList.add("show-container");
+
         // set local storage
         addToLocalStorage(id, itemValue)
         // set back to default
         document.querySelector("#item-name").value = '';
-
-
     }
     else
     {
@@ -38,69 +37,53 @@ function addItem(e) {
 }
 
 //edit existing item in the list
-//delete item from the list
 function editItem(e) {
     let itemToEdit = e.currentTarget.parentElement.parentElement
     // console.log(itemToEdit.firstElementChild)
-    let newValue = window.prompt("Please fill the new item value", "defaultText");
+    let newValue = window.prompt("Please fill the new item value", "");
+
+    if (newValue === "")
+    {
+        return;
+    }
+
     itemToEdit.firstElementChild.innerHTML = `<p>${newValue}</p>`
 
-
-
     //edit from localStorage
-    let existingItems = getLocalStorage()
-    existingItems = existingItems.filter(function (item) {
-        if (item.id !== itemToEdit.id)
-        {
-            return item;
-        }
-    });
-    let id = itemToEdit.id
-    existingItems.push({id, newValue})
+    removeFromLocalStorage(itemToEdit.id)
+    addToLocalStorage(itemToEdit.id, newValue)
 
-    localStorage.setItem("list", JSON.stringify(existingItems))
-
-    window.alert("Item edit")
+    window.alert("Item edited")
 
 }
 
 //delete item from the list
-function deleteItem(e)
-{
-    let itemToDelete =  e.currentTarget.parentElement.parentElement
+function deleteItem(e) {
+    let itemToDelete = e.currentTarget.parentElement.parentElement
 
     //remove child
     listContainer.removeChild(itemToDelete)
 
     //remove from localStorage
-    let existingItems = getLocalStorage()
-    existingItems = existingItems.filter(function (item) {
-        if (item.id !== itemToDelete.id) {
-            return item;
-        }
-    });
-
-    localStorage.setItem("list", JSON.stringify(existingItems))
+    removeFromLocalStorage(itemToDelete.id)
 
     window.alert("Item removed")
 
 }
 
 //delete all items from the list
-function clearAll(){
+function clearAll() {
 
-    document.querySelectorAll('.item-row').forEach(function (item){
+    document.querySelectorAll('.item-row').forEach(function (item) {
         listContainer.removeChild(item)
     })
 
     localStorage.removeItem('list')
-
-
 }
 
 /// internal methods ///
 function createListItem(id, value) {
-    var newItem = document.createElement("div")
+    let newItem = document.createElement("div")
     newItem.className = "item-row"
     newItem.id = id
     newItem.innerHTML = `<div class="item">
@@ -113,10 +96,10 @@ function createListItem(id, value) {
 
     listContainer.appendChild(newItem)
 
-    var editBtn = document.getElementById(`edit-item-${id}`)
+    const editBtn = document.getElementById(`edit-item-${id}`);
     editBtn.addEventListener('click', editItem);
 
-    var deleteBtn = document.getElementById(`delete-item-${id}`)
+    const deleteBtn = document.getElementById(`delete-item-${id}`);
     deleteBtn.addEventListener('click', deleteItem);
 
 
@@ -132,12 +115,26 @@ function setupItems() {
         });
     }
 }
+
 function addToLocalStorage(id, value) {
     var existingItems = getLocalStorage()
     existingItems.push({id, value})
 
     localStorage.setItem("list", JSON.stringify(existingItems))
 }
+
+function removeFromLocalStorage(id) {
+
+    let existingItems = getLocalStorage()
+    existingItems = existingItems.filter(function (item) {
+        if (item.id !== id)
+        {
+            return item;
+        }
+    });
+    localStorage.setItem("list", JSON.stringify(existingItems))
+}
+
 function getLocalStorage() {
     return localStorage.getItem("list")
         ? JSON.parse(localStorage.getItem("list"))
