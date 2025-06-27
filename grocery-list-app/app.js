@@ -2,6 +2,7 @@
 const listContainer = document.querySelector(".list");
 const newItemBtn = document.getElementById("add-item");
 const clearBtn = document.getElementById("clear-all");
+const alert = document.querySelector(".alert");
 
 // display items onload
 window.addEventListener("DOMContentLoaded", setupItems);
@@ -22,7 +23,13 @@ function addItem(e) {
         createListItem(id, itemValue)
 
         // display alert
-        window.alert("New item added to the list");
+        alert.textContent = 'Item Added'
+        alert.classList.add(`alert-success`);
+
+        setTimeout(function (){
+            alert.textContent = '';
+            alert.classList.remove(`alert-danger`);
+        }, 2000)
 
         // set local storage
         addToLocalStorage(id, itemValue)
@@ -31,7 +38,14 @@ function addItem(e) {
     }
     else
     {
-        window.alert("Please, fill a value for new item")
+        alert.textContent = 'Please, fill a value for new item'
+        alert.classList.add(`alert-danger`);
+
+        setTimeout(function (){
+            alert.textContent = '';
+            alert.classList.remove(`alert-danger`);
+        }, 2000)
+
     }
 
 }
@@ -53,7 +67,13 @@ function editItem(e) {
     removeFromLocalStorage(itemToEdit.id)
     addToLocalStorage(itemToEdit.id, newValue)
 
-    window.alert("Item edited")
+    alert.textContent = 'Item Edit'
+    alert.classList.add(`alert-success`);
+
+    setTimeout(function (){
+        alert.textContent = '';
+        alert.classList.remove(`alert-danger`);
+    }, 2000)
 
 }
 
@@ -67,7 +87,13 @@ function deleteItem(e) {
     //remove from localStorage
     removeFromLocalStorage(itemToDelete.id)
 
-    window.alert("Item removed")
+    alert.textContent = 'Item Removed'
+    alert.classList.add(`alert-success`);
+
+    setTimeout(function (){
+        alert.textContent = '';
+        alert.classList.remove(`alert-danger`);
+    }, 2000)
 
 }
 

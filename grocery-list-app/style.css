@@ -5,7 +5,28 @@ body {
     line-height: 1.5;
     font-size: 0.875rem;
     text-align: center;
+}
 
+input[type=text] {
+    padding: 6px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+button {
+    background-color: darkgrey;
+    border-radius: 8px;
+    color: black;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 12px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: forestgreen; /* Green */
+    color: white;
 }
 
 h1 {
@@ -13,19 +34,38 @@ h1 {
     margin-bottom: 3rem;
 }
 
+.alert {
+    margin-bottom: 1rem;
+    height: 1.25rem;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: green;
+}
+
+.alert-danger {
+    color: red;
+}
+
 .list{
     display: grid;
+    place-items: center
 }
 
-/*.item-row{*/
-/*    display: block;*/
-/*}*/
+.item-row{
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Optional spacing */
+}
 
 .item{
-    display: inline-grid;
+    font-size: 1rem;
+    padding: 2px 4px;
+    font-family: cursive;
+    text-transform: capitalize;
 }
-
-.item-action{
-    display: inline;
-}
-
