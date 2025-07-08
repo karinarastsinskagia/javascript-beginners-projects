@@ -174,7 +174,7 @@ export const propertiesForSale = [
         id: 20,
         propertyLocation: 'Highlands, Scotland',
         type: "house",
-        priceGBP: 550000,
+        priceGBP: 5,
         roomsM2: 90,
         comment: 'Lots of potential, snug, a must see!',
         image: 'house.jpg'
