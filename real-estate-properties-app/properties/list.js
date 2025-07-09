@@ -75,7 +75,7 @@ export const propertiesForSale = [
         id: 9,
         propertyLocation: 'Kensington, London',
         type: "cottage",
-        priceGBP: 890000,
+        priceGBP: 590000,
         roomsM2: 40,
         comment: 'Highly desirable location in stunning scenery!',
         image: 'cottage.jpg'
@@ -111,7 +111,7 @@ export const propertiesForSale = [
         id: 13,
         propertyLocation: 'Kensington, London',
         type: "cottage",
-        priceGBP: 890000,
+        priceGBP: 190000,
         roomsM2: 90,
         comment: 'Highly desirable location in stunning scenery!',
         image: 'cottage.jpg'
@@ -147,7 +147,7 @@ export const propertiesForSale = [
         id: 17,
         propertyLocation: 'Kensington, London',
         type: "cottage",
-        priceGBP: 890000,
+        priceGBP: 1090000,
         roomsM2: 90,
         comment: 'Highly desirable location in stunning scenery!',
         image: 'cottage.jpg'

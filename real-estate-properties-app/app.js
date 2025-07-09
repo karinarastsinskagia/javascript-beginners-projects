@@ -6,6 +6,8 @@ const propertiesList = document.querySelector(".container");
 const urlParams = new URLSearchParams(window.location.search);
 let singlePropertyId = parseInt(urlParams.get('id'));
 
+let result = []
+
 if (singlePropertyId)
 {
     let propertyForSale = propertiesForSale.filter(property=>property.id === singlePropertyId)
@@ -42,7 +44,8 @@ else
     filterByVila()
     filterByCottage()
 
-    listProperties(propertiesForSale)
+    result.length > 0 ? listProperties(result) : listProperties(propertiesForSale)
+
 }
 
 function listProperties(properties) {
@@ -69,60 +72,84 @@ function listProperties(properties) {
         propertiesList.appendChild(propertyCard)
     })
 }
+
 function sortByLocation() {
     let sortByLocation = document.createElement('div')
     sortByLocation.innerHTML = `<button>Sort By Location</button>`
 
     sortByLocation.addEventListener('click', function (e) {
-        propertiesForSale.sort((a, b)=>a.propertyLocation.localeCompare((b.propertyLocation)));
 
-        listProperties(propertiesForSale)
+        result = result.length > 0
+            ? [...result].sort((a, b)=>a.propertyLocation.localeCompare((b.propertyLocation)))
+            : [...propertiesForSale].sort((a, b)=>a.propertyLocation.localeCompare((b.propertyLocation)))
+
+        listProperties(result)
 
     })
 
     filters.appendChild(sortByLocation)
 }
+
 function sortByPrice() {
     let sortByPrice = document.createElement('div')
     sortByPrice.innerHTML = `<button>Sort By Price</button>`
 
     sortByPrice.addEventListener('click', function (e) {
-        propertiesForSale.sort((a, b)=>a.priceGBP - b.priceGBP);
-        listProperties(propertiesForSale)
+
+        result = result.length > 0
+            ? [...result].sort((a, b)=>a.priceGBP - b.priceGBP)
+            : [...propertiesForSale].sort((a, b)=>a.priceGBP - b.priceGBP)
+
+        listProperties(result)
     })
 
     filters.appendChild(sortByPrice)
 }
+
 function filterByHouse() {
     //filter btn
     let filterByTypeHouse = document.createElement('div')
     filterByTypeHouse.innerHTML = `<input type="checkbox">House</input>`
 
     filterByTypeHouse.addEventListener('click', function (e) {
-        let houses = propertiesForSale.filter(property=>property.type === "house")
-        listProperties(houses)
+
+        result = result.length > 0
+            ? [...result, ...propertiesForSale.filter(property=>property.type === "house")]
+            : propertiesForSale.filter(property=>property.type === "house");
+
+        listProperties(result)
     })
 
     filters.appendChild(filterByTypeHouse)
 }
+
 function filterByVila() {
     let filterByTypeVilla = document.createElement('div')
     filterByTypeVilla.innerHTML = `<input type="checkbox">Villa</<input>`
 
     filterByTypeVilla.addEventListener('click', function (e) {
-        let villa = propertiesForSale.filter(property=>property.type === "villa")
-        listProperties(villa)
+
+        result = result.length > 0
+            ? [...result, ...propertiesForSale.filter(property=>property.type === "villa")]
+            : propertiesForSale.filter(property=>property.type === "villa");
+
+        listProperties(result)
     })
 
     filters.appendChild(filterByTypeVilla)
 }
+
 function filterByCottage() {
     let filterByTypeCottage = document.createElement('div')
     filterByTypeCottage.innerHTML = `<input type="checkbox">Cottage</button>`
 
     filterByTypeCottage.addEventListener('click', function (e) {
-        let cottage = propertiesForSale.filter(property=>property.type === "cottage")
-        listProperties(cottage)
+
+        result = result.length > 0
+            ? [...result, ...propertiesForSale.filter(property=>property.type === "cottage")]
+            : propertiesForSale.filter(property=>property.type === "cottage");
+
+        listProperties(result)
     })
 
     filters.appendChild(filterByTypeCottage)
