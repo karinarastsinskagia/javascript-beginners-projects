@@ -1,0 +1,127 @@
+
+body {
+    margin: 0;
+    color: #333;
+    font-family: "Open Sans", sans-serif;
+}
+
+.container {
+    display: block;
+    justify-content: left;
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    width: 40%;
+    box-shadow: 0px 0px 10px 1px #999;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    max-height: 120px;
+}
+
+.card img {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 100%;
+    margin: 5px;
+    align-self: center;
+}
+
+.card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5px;
+    overflow: hidden;
+}
+
+h2{
+    font-size: 16px;
+    margin: 0 0 2px 0;
+}
+
+h3{
+    font-size: 12px;
+    margin: 0 0 2px 0;
+}
+
+p {
+    font-size: 13px;
+    margin: 2px;
+    display: inline;
+}
+
+/* unvisited link */
+a:link {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover, a:active {
+   color: cadetblue;
+}
+
+.my-button {
+    transition-duration: 0.4s;
+    background-color: lightgray; /* Green */
+    border-radius: 12px;
+    color: black;
+    margin: 20px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.my-button:hover {
+    background-color: lightslategray; /* Green */
+    color: white;
+}
+
+.filters {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;
+
+}
+.filters button {
+    transition-duration: 0.4s;
+    background-color: lightgray; /* Green */
+    border-radius: 12px;
+    color: black;
+    margin: 20px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.filters button:hover {
+    background-color: lightslategray; /* Green */
+    color: white;
+}
+
+
+.filters input[type="checkbox"] {
+    margin: 20px;
+    padding: 15px 32px;
+    outline: 2px solid black;
+}
+
+/* Style label when checkbox is checked */
+.filters input[type="checkbox"]:checked + span,
+.filters input[type="checkbox"]:checked {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+
