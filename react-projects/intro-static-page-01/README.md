@@ -10,6 +10,6 @@ Type your project name and select a framework.
 
 After that `cd` to your project folder and execute: 
 
-`npm run install`
+`npm install`
 `npm run build`
 `npm run dev`
